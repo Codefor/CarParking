@@ -9,29 +9,34 @@ public class Park {
 		this.num = _num;
 		this.used = 0;
 	}
-	public void getCarnum(){
+	public int getFreeCarNum(){
 		int avai = this.num - this.used;
-		System.out.println("AVAI:"+avai); 
+		System.out.println("AVAI:"+avai);
+		return avai;
 	}
 	
-	public void Stop(){
+	public boolean Stop(){
 //		when avai <= 0 you can not park
 		int avai = this.num - this.used;
 		if(avai <= 0){
 			System.out.println("NOT AVAILABLE!you can not park!");
+			return false;
 		}else{
 			System.out.println("another car arrived!");
 			this.used ++;
+			return true;
 		}
 	}
 	
-	public void Go(){
+	public boolean Go(){
 		//you can always go!
 		if(this.used <= 0){
 			System.out.println("NO CAR,you can not go!");
+			return false;
 		}else{
 			System.out.println("another car gone!");
-			this.used --;	
+			this.used --;
+			return true;
 		}
 	}
 	
@@ -47,6 +52,6 @@ public class Park {
 		p.Go();
 		p.Go();
 		p.Go();
-		p.getCarnum();
+		p.getFreeCarNum();
 	}
 }
