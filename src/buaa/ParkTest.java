@@ -15,8 +15,12 @@ public class ParkTest {
 	
 	@Test
 	public void testAddCar() {
-		aPark.Stop();
-		assertEquals(99, aPark.getFreeCarNum());//Equals(99, aPark.getCarnum());
+		//aPark.Stop();
+		ParkingBoy aGirl = new ParkingBoy(3);
+		//aGirl.Stop(new CarInfo(1));
+		CarInfo carInfo = new CarInfo(1);
+		assertEquals(aGirl.Stop(carInfo), true);//Equals(99, aPark.getCarnum());
+		assertEquals(aGirl.GetCar(carInfo), true);
 		
 	}
 
