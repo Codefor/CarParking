@@ -7,58 +7,60 @@ public class Park {
 
 	private int num;
 	private int used;
-	private ArrayList<CarInfo> Cars;
-	private HashMap<CarInfo, Integer> parkMap;
-	private ArrayList<Integer> EmptyList;
+	private ArrayList<Integer> Cars;//parked carIds
+	private HashMap<Integer, Integer> parkMap;//carId 2 parkId
+	private ArrayList<Integer> EmptyList;//the empty parkIds
 	
-	public Park(int _num){
-		this.num = _num;
+	public Park(int num){
+		this.num = num;
 		this.used = 0;
-		Cars = new ArrayList<CarInfo>();
-		parkMap = new HashMap<>(_num);
+		Cars = new ArrayList<Integer>();
+		parkMap = new HashMap<>(num);
 		EmptyList = new ArrayList<Integer>();
-		for(int i = 0; i < _num; i++) {
+		for(int i = 0; i < num; i++) {
 			EmptyList.add(i);
 		}
 	}
 
 	public int getFreeCarNum(){
-		int avai = this.num - this.used;
-		System.out.println("AVAI:"+avai);
-		return avai;
+		return this.num - this.used;
 	}
 	
-	public boolean Stop(CarInfo carInfo){
-//		when avai <= 0 you can not park
-		int avai = this.num - this.used;
-		if(avai <= 0){
-			System.out.println("NOT AVAILABLE!you can not park!");
+	public boolean Stop(Car car){
+		if(this.getFreeCarNum() <= 0){
 			return false;
 		}else{
-			Cars.add(carInfo);
-			parkMap.put(carInfo, EmptyList.get(0));
-			EmptyList.remove(0);
-			
-			System.out.println("another car arrived!");
-			this.used ++;
-			return true;
+			int id = car.getId();
+			if( this.parkMap.containsKey(id)){
+				return false;//the car is already in the parkland
+			}else{
+				//TODO need sync
+				Cars.add(id);
+				EmptyList.remove(0);
+				parkMap.put(id, EmptyList.get(0));				
+				
+				this.used ++;
+				return true;
+			}			
 		}
 	}
 	
-	public boolean Go(CarInfo carInfo){
-		//you can always go!
+	public boolean Go(Car car){
 		if(this.used <= 0){
-			System.out.println("NO CAR,you can not go!");
 			return false;
 		}else{
-			System.out.println("another car gone!");
-			int position = parkMap.get(carInfo);
-			EmptyList.add(position);
-			parkMap.remove(carInfo);
-			this.used --;			
-			return true;
+			int id = car.getId();
+			if (this.parkMap.containsKey(id)){
+				//TODO need sync
+				int parkId = parkMap.get(id);				
+				parkMap.remove(id);
+				EmptyList.add(parkId);
+				this.used --;			
+				return true;
+			}else{
+				return false;
+			}
+			
 		}
-	}
-	
-	
+	}	
 }

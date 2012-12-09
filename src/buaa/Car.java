@@ -1,11 +1,12 @@
 package buaa;
 
-public class CarInfo {
+public class Car {
 
-	private int CarNum;
-	public CarInfo(int num){
-		CarNum = num;
+	private int id;
+	public Car(int id){
+		this.id = id;
 	}
-
-	
+	public int getId(){
+		return this.id;
+	}
 }

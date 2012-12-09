@@ -2,7 +2,7 @@ package buaa;
 
 public class ParkingBoy {
 	private Park[] ParkLands;
-	private int ParkNum;
+	private int ParkNum;//num of ParkLands
 
 	public ParkingBoy(int numPark) {
 		super();
@@ -13,24 +13,28 @@ public class ParkingBoy {
 		}
 	}
 	
-	public Boolean Stop(CarInfo carInfo) {
+	public Boolean Stop(Car car) {
 		for (Park parkLand : ParkLands) {
 			if(parkLand.getFreeCarNum() > 0)
 			{
-				return parkLand.Stop(carInfo);				
+				return parkLand.Stop(car);				
 			}
 		}
 		return false;
 	}
 	
-	public Boolean GetCar(CarInfo carInfo) {
+	public Boolean GetCar(Car car) {
 		for (Park parkLand : ParkLands) {
-			if(parkLand.Go(carInfo)) {
+			if(parkLand.Go(car)) {
 				return true;
 			}
 		}
 		return false;
 	}
 	
-
+	public void Status(){
+		for(int i = 0; i < this.ParkNum; i++) {
+			System.out.println("ParkLand "+i);
+		}
+	}
 }
