@@ -36,8 +36,7 @@ public class Park {
 			}else{
 				//TODO need sync
 				Cars.add(id);
-				EmptyList.remove(0);
-				parkMap.put(id, EmptyList.get(0));				
+				parkMap.put(id, EmptyList.remove(0));				
 				
 				this.used ++;
 				return true;

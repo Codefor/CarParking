@@ -4,12 +4,12 @@ public class ParkingBoy {
 	private Park[] ParkLands;
 	private int ParkNum;//num of ParkLands
 
-	public ParkingBoy(int numPark) {
+	public ParkingBoy(int numPark,int num) {
 		super();
 		ParkNum = numPark;
 		ParkLands = new Park[numPark];
 		for(int i = 0; i < numPark; i++) {
-			ParkLands[i] = new Park(100);
+			ParkLands[i] = new Park(num);
 		}
 	}
 	
@@ -23,7 +23,7 @@ public class ParkingBoy {
 		return false;
 	}
 	
-	public Boolean GetCar(Car car) {
+	public Boolean Go(Car car) {
 		for (Park parkLand : ParkLands) {
 			if(parkLand.Go(car)) {
 				return true;
