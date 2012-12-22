@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite errors="0" failures="0" hostname="Codefor-PC" name="com.buaa.ParkTest" tests="6" time="0.214" timestamp="2012-12-22T08:46:01">
+  <properties />
+  <testcase classname="com.buaa.ParkTest" name="testAddCar" time="0.02" />
+  <testcase classname="com.buaa.ParkTest" name="testSingleParkStop" time="0.0020" />
+  <testcase classname="com.buaa.ParkTest" name="testSingleParkGo" time="0.013" />
+  <testcase classname="com.buaa.ParkTest" name="testStop" time="0.0020" />
+  <testcase classname="com.buaa.ParkTest" name="testGo" time="0.012" />
+  <testcase classname="com.buaa.ParkTest" name="testStatus" time="0.021" />
+  <system-out><![CDATA[ParkLand 0
+ParkLand 1
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
